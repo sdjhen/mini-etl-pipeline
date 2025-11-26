@@ -16,8 +16,21 @@ def load(clean_records):
     for rec in clean_records:
         print(f"Loaded: {rec}")
         
-        raw_data = [
+        
+# --- Pipeline Execution ---
+raw_data = [
     {"city": "   london", "temp": "20.5"},
     {"city": "tokyo", "temp": "not a number"},
     {"city": "berlin"}
 ]
+        
+extracted = extract(raw_data)
+transformed = []
+
+for rec in extracted:
+    try:
+        transformed.append(transform(rec))
+    except ValueError:
+        print(f"Skipping bad record: {rec}")
+
+load(transformed)
