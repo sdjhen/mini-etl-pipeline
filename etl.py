@@ -10,3 +10,8 @@ def transform(record):
     cleaned["city"] = record["city"].strip().title()
     cleaned["temp"] = float(record["temp"])   # Might raise ValueError
     return cleaned
+
+def load(clean_records):
+    # Pretend to load to warehouse
+    for rec in clean_records:
+        print(f"Loaded: {rec}")
